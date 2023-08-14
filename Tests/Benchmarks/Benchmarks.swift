@@ -92,7 +92,7 @@ class Benchmarks: XCTestCase {
     func testMapFilterPumping() {
         measure {
             var sum = 0
-            let subscription = Observable<Int>.create { observer in
+            let subscription = Array(Observable<Int>.create { observer in
                 for _ in 0 ..< iterations * 10 {
                     observer.on(.next(1))
                 }
@@ -102,8 +102,7 @@ class Benchmarks: XCTestCase {
                 .map { $0 }.filter { _ in true }
                 .map { $0 }.filter { _ in true }
                 .map { $0 }.filter { _ in true }
-                .map { $0 }.filter { _ in true }
-                .map { $0 }.filter { _ in true }
+                .map { $0 }.filter { _ in true }).filter { _ in true }
                 .subscribe(onNext: { x in
                     sum += x
                 })
@@ -119,7 +118,7 @@ class Benchmarks: XCTestCase {
             var sum = 0
 
             for _ in 0 ..< iterations {
-                let subscription = Observable<Int>.create { observer in
+                let subscription = Array(Observable<Int>.create { observer in
                         for _ in 0 ..< 1 {
                             observer.on(.next(1))
                         }
@@ -129,8 +128,7 @@ class Benchmarks: XCTestCase {
                     .map { $0 }.filter { _ in true }
                     .map { $0 }.filter { _ in true }
                     .map { $0 }.filter { _ in true }
-                    .map { $0 }.filter { _ in true }
-                    .map { $0 }.filter { _ in true }
+                    .map { $0 }.filter { _ in true }).filter { _ in true }
                     .subscribe(onNext: { x in
                         sum += x
                     })
@@ -145,7 +143,7 @@ class Benchmarks: XCTestCase {
     func testMapFilterDriverPumping() {
         measure {
             var sum = 0
-            let subscription = Observable<Int>.create { observer in
+            let subscription = Array(Observable<Int>.create { observer in
                     for _ in 0 ..< iterations * 10 {
                         observer.on(.next(1))
                     }
@@ -155,8 +153,7 @@ class Benchmarks: XCTestCase {
                 .map { $0 }.filter { _ in true }
                 .map { $0 }.filter { _ in true }
                 .map { $0 }.filter { _ in true }
-                .map { $0 }.filter { _ in true }
-                .map { $0 }.filter { _ in true }
+                .map { $0 }.filter { _ in true }).filter { _ in true }
                 .drive(onNext: { x in
                     sum += x
                 })
@@ -172,7 +169,7 @@ class Benchmarks: XCTestCase {
             var sum = 0
 
             for _ in 0 ..< iterations {
-                let subscription = Observable<Int>.create { observer in
+                let subscription = Array(Observable<Int>.create { observer in
                         for _ in 0 ..< 1 {
                             observer.on(.next(1))
                         }
@@ -182,8 +179,7 @@ class Benchmarks: XCTestCase {
                     .map { $0 }.filter { _ in true }
                     .map { $0 }.filter { _ in true }
                     .map { $0 }.filter { _ in true }
-                    .map { $0 }.filter { _ in true }
-                    .map { $0 }.filter { _ in true }
+                    .map { $0 }.filter { _ in true }).filter { _ in true }
                     .drive(onNext: { x in
                         sum += x
                     })

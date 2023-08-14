@@ -64,7 +64,7 @@ extension ControlPropertyTests {
         orEmpty.on(.next("a"))
 
         let bindingEvents: [Event<String>] = bindingObserver.events.map { $0.value.map { $0 ?? "" } }
-        let observingEvents: [Event<String>] = finalObserver.events.map { $0.value.map { $0 } }
+        let observingEvents: [Event<String>] = finalObserver.events.map { Array($0.value) }
         XCTAssertArraysEqual(bindingEvents, [Event<String>.next("a")], ==)
         XCTAssertArraysEqual(observingEvents, [Event<String>.next(""), Event<String>.completed], ==)
     }
