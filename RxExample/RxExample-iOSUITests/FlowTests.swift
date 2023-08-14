@@ -74,9 +74,9 @@ extension FlowTests {
         editButton.tap()
 
         func reorderButtonForIndex(_ index: Int) -> XCUIElement {
-            return app.tables.cells.allElementsBoundByIndex[index].buttons.allElementsBoundByIndex.filter { element in
+            return app.tables.cells.allElementsBoundByIndex[index].buttons.allElementsBoundByIndex.first(where: { element in
                 element.label.hasPrefix("Reorder ")
-            }.first!
+            })!
         }
 
         reorderButtonForIndex(5).press(forDuration: 1.5, thenDragTo: reorderButtonForIndex(2))
