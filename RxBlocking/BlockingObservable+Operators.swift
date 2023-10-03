@@ -28,8 +28,6 @@ extension BlockingObservable {
     ///
     /// - returns: All elements of sequence.
     public func toArray() throws -> [Element] {
-        let x = 1
-        if (1 == x) {}
         let results = self.materializeResult()
         return try self.elementsOrThrow(results)
     }
