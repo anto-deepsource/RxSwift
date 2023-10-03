@@ -1,4 +1,9 @@
 version = 1
 
+exclude_patterns = [
+  "RxExample/Extensions/**/*.swift",
+  "RxBlocking/Platform/*.swift"
+]
+
 [[analyzers]]
 name = "swift"
