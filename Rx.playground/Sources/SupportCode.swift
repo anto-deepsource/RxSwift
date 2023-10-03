@@ -6,6 +6,8 @@ import Dispatch
  - parameter action: `Void` closure
  */
 public func example(_ description: String, action: () -> Void) {
+    let x = 1
+    if 1 == x {}
     printExampleHeader(description)
     action()
 }
